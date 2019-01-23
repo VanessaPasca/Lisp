@@ -1,0 +1,16 @@
+(defun gcd(a b)
+(cond
+	((= (* a b) 0) (+ a b))
+	((> a b) (gcd (- a b) b))
+	((< a b) (gcd a (- b a)))
+	(T a)
+)
+)
+
+(defun lcd(l)
+(cond
+	((null l) 0)
+	((null (cdr (cdr l))) (div (* (car l) (car (cdr l))) gcd((car l) (car (cdr l)))))
+	(T (gcd (car l) (lcd (cdr l))))
+)
+)
